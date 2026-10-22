@@ -1,0 +1,54 @@
+---
+import { AUTHOR, SITE_TITLE } from '../consts';
+
+interface Props {
+  title: string;
+  pubDate: Date;
+  url: URL;
+  doi?: string;
+  slug: string;
+}
+
+const { title, pubDate, url, doi, slug } = Astro.props;
+const year = pubDate.getUTCFullYear();
+const dateText = pubDate.toLocaleDateString('en-CA', {
+  year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC',
+});
+const citeName = AUTHOR.lastName ? `${AUTHOR.lastName}, ${AUTHOR.firstName}` : AUTHOR.firstName;
+const key = `${(AUTHOR.lastName || AUTHOR.firstName).toLowerCase()}${year}${slug.split('-')[0]}`;
+const link = doi ? `https://doi.org/${doi}` : url.toString();
+
+const plain = `${citeName} (${year}). ${title}. ${SITE_TITLE}, ${dateText}. ${link}`;
+
+const bibLines = [
+  `@misc{${key},`,
+  `  author       = {${citeName}},`,
+  `  title        = {${title}},`,
+  `  year         = {${year}},`,
+  `  howpublished = {\\url{${url}}},`,
+];
+if (doi) bibLines.push(`  doi          = {${doi}},`);
+bibLines.push(`  note         = {Published ${dateText}}`, `}`);
+const bibtex = bibLines.join('\n');
+---
+<section class="cite" aria-labelledby="cite-heading">
+  <h2 id="cite-heading">Cite this</h2>
+  <p>{plain}</p>
+  <pre id="bibtex">{bibtex}</pre>
+  <button type="button" data-copy="bibtex">Copy BibTeX</button>
+</section>
+<script>
+  document.querySelectorAll<HTMLButtonElement>('button[data-copy]').forEach((btn) => {
+    btn.addEventListener('click', async () => {
+      const id = btn.dataset.copy!;
+      const text = document.getElementById(id)?.textContent ?? '';
+      try {
+        await navigator.clipboard.writeText(text);
+        btn.textContent = 'Copied';
+      } catch {
+        btn.textContent = 'Select and copy manually';
+      }
+      setTimeout(() => (btn.textContent = 'Copy BibTeX'), 2000);
+    });
+  });
+</script>

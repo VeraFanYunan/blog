@@ -1,0 +1,169 @@
+:root {
+  --bg: #fbfaf7;
+  --text: #1d1c1a;
+  --muted: #6b6862;
+  --rule: #e4e1da;
+  --accent: #0f6e56;
+  --code-bg: #f1efe8;
+  --serif: Charter, 'Bitstream Charter', 'Iowan Old Style', 'Sitka Text', Cambria, Georgia, serif;
+  --sans: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --mono: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  --measure: 40rem;
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #161614;
+    --text: #e9e7e1;
+    --muted: #a19e96;
+    --rule: #34332f;
+    --accent: #5dcaa5;
+    --code-bg: #22221f;
+  }
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--serif);
+  font-size: 1.125rem;
+  line-height: 1.7;
+}
+
+.wrap {
+  max-width: var(--measure);
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+a { color: var(--accent); text-underline-offset: 0.18em; text-decoration-thickness: 1px; }
+a:hover { text-decoration-thickness: 2px; }
+
+h1, h2, h3 {
+  font-family: var(--sans);
+  font-weight: 650;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+h1 { font-size: 2.1rem; margin: 0 0 0.5rem; }
+h2 { font-size: 1.35rem; margin: 2.6rem 0 0.8rem; }
+h3 { font-size: 1.1rem; margin: 2rem 0 0.6rem; }
+
+p { margin: 0 0 1.15rem; }
+strong { font-weight: 650; }
+
+img { max-width: 100%; height: auto; }
+
+figure { margin: 2rem 0; }
+figcaption {
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-top: 0.6rem;
+}
+
+code {
+  font-family: var(--mono);
+  font-size: 0.88em;
+  background: var(--code-bg);
+  padding: 0.1em 0.35em;
+  border-radius: 4px;
+}
+pre {
+  font-size: 0.85rem;
+  line-height: 1.55;
+  padding: 1rem;
+  border-radius: 8px;
+  overflow-x: auto;
+}
+pre code { background: none; padding: 0; }
+
+ul, ol { padding-left: 1.3rem; margin: 0 0 1.15rem; }
+li { margin-bottom: 0.35rem; }
+
+hr { border: 0; border-top: 1px solid var(--rule); margin: 2.5rem 0; }
+
+.meta, .site-header, .site-footer, .post-list time {
+  font-family: var(--sans);
+}
+
+.meta { color: var(--muted); font-size: 0.9rem; }
+
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 1.5rem 0 3rem;
+  font-size: 0.95rem;
+}
+.site-header .name { font-weight: 650; color: var(--text); text-decoration: none; }
+.site-header nav { display: flex; gap: 1.2rem; }
+.site-header nav a { color: var(--muted); text-decoration: none; }
+.site-header nav a:hover { color: var(--text); }
+
+.site-footer {
+  border-top: 1px solid var(--rule);
+  margin-top: 4rem;
+  padding: 1.5rem 0 3rem;
+  font-size: 0.85rem;
+  color: var(--muted);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.2rem;
+}
+.site-footer a { color: var(--muted); }
+
+.post-list { list-style: none; padding: 0; margin: 0; }
+.post-list li { margin: 0 0 2rem; }
+.post-list a.title {
+  font-family: var(--sans);
+  font-size: 1.2rem;
+  font-weight: 650;
+  color: var(--text);
+  text-decoration: none;
+}
+.post-list a.title:hover { color: var(--accent); }
+.post-list p { margin: 0.3rem 0 0; color: var(--muted); }
+.post-list time { font-size: 0.85rem; color: var(--muted); display: block; }
+
+.cite {
+  margin-top: 3rem;
+  padding: 1.25rem;
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  font-family: var(--sans);
+  font-size: 0.9rem;
+}
+.cite h2 { margin: 0 0 0.6rem; font-size: 1rem; }
+.cite p { margin: 0 0 0.8rem; }
+.cite pre {
+  background: var(--code-bg);
+  font-size: 0.78rem;
+  margin: 0 0 0.6rem;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+.cite button {
+  font: inherit;
+  font-size: 0.85rem;
+  padding: 0.35rem 0.8rem;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+}
+.cite button:hover { border-color: var(--muted); }
+
+@media (max-width: 600px) {
+  body { font-size: 1.06rem; }
+  h1 { font-size: 1.7rem; }
+  .site-header { padding-bottom: 2rem; }
+}
