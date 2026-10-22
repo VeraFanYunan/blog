@@ -1,10 +1,31 @@
 ---
 import Base from '../layouts/Base.astro';
-import { AUTHOR, LINKS, authorDisplayName } from '../consts';
+import { LINKS, authorDisplayName } from '../consts';
 ---
 <Base title="About" description={`About ${authorDisplayName()}`}>
   <h1>About</h1>
-  <p class="meta">{AUTHOR.role} · {AUTHOR.location}</p>
 
-  
+  <p>
+    I'm Vera. I grew up across four countries. I speak English, Chinese and French, and write code in a few more.
+  </p>
+  <p>
+    These days I build AI systems: agents for enterprise workflows, and the memory, evaluation and data loops that decide whether they actually get better. Before that, I worked on Tier-0 distributed systems at DoorDash and on banking and trading systems at Citi.
+  </p>
+  <p>
+    Somewhere along the way, I published in <em>The Lancet</em>, and at Imperial I did research on self-supervised learning and ML infrastructure.
+  </p>
+
+  <h2>Education</h2>
+  <ul>
+    <li>MSc, Applied Computational Science and Engineering · Imperial College London</li>
+    <li>BSc, Computer Science and Statistics, with Distinction · University of British Columbia</li>
+    <li>Hwa Chong Junior College · Singapore</li>
+  </ul>
+
+  <p>
+    {LINKS.linkedin && <><a href={LINKS.linkedin}>LinkedIn</a></>}
+    {LINKS.github && <> · <a href={LINKS.github}>GitHub</a></>}
+    {LINKS.orcid && <> · <a href={LINKS.orcid}>ORCID</a></>}
+    {LINKS.email && <> · <a href={`mailto:${LINKS.email}`}>Email</a></>}
+  </p>
 </Base>
