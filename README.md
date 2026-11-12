@@ -3,7 +3,7 @@
 Source for my site: https://verafanyunan.github.io/blog/
 
 
-I write about engineering AI systems that learn from feedback: agent memory, evaluation loops, and the data systems around models.
+I write about engineering AI infra & inference, agent memory, evaluation loops, and the data systems around models. 
 
 Some posts first appeared on [LinkedIn](https://www.linkedin.com/in/verafanyn/); each one notes its original publication date.
 
